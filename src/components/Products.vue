@@ -1,7 +1,6 @@
 <template>
   <div>
     <h1 class="title">All Items</h1>
-      <p>{{length}} products</p>
       <table class="table is-striped">
         <thead>
           <tr>
