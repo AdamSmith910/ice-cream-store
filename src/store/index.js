@@ -20,7 +20,7 @@ const state = {
     },
     {
       id: '3',
-      name:  'Mint Chocolate Chip'
+      name:  'Mint Chocolate Chip',
       price: 1
     },
     {
