@@ -10,26 +10,31 @@ const state = {
   all: [
     {
       id: '1',
+      measurement: 'scoop',
       name: 'Vanilla',
       price: 1
     },
     {
       id: '2',
+      measurement: 'scoop',
       name: 'Chocolate',
       price: 1
     },
     {
       id: '3',
+      measurement: 'scoop',
       name:  'Mint Chocolate Chip',
       price: 1
     },
     {
       id: '4',
+      measurement: 'serving',
       name:  'Sprinkles',
       price: 0.25
     },
     {
       id: '5',
+      measurement: 'serving',
       name:  'Chocolate Chips',
       price: 0.25
     }

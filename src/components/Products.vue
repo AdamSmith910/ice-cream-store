@@ -5,6 +5,7 @@
       <table class="table is-striped">
         <thead>
           <tr>
+            <th>Quantity</th>
             <th>Name</th>
             <th>Price</th>
             <th></th>
@@ -12,6 +13,7 @@
         </thead>
         <tbody>
           <tr v-for="product in products" track-by="id">
+            <td>{{product.measurement}}</td>
             <td>{{product.name}}</td>
             <td>${{product.price}}</td>
             <td><button @click='addToCart(product)' class='button is-info'>Add to cart</button></td>
