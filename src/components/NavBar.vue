@@ -1,11 +1,5 @@
 <template>
   <nav class="nav has-shadow" style='box-shadow: 0 1px 0 rgba(219,219,219,.3);'>
-    <div class="nav-left">
-      <router-link to="/" class="nav-item">
-        <img src="../assets/logo.png" alt="Bulma logo">
-      </router-link>
-    </div>
-
     <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
     <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
     <span class="nav-toggle">
