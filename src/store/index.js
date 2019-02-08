@@ -26,12 +26,12 @@ const state = {
     {
       id: '4',
       name:  'Sprinkles',
-      price: 1
+      price: 0.25
     },
     {
       id: '5',
       name:  'Chocolate Chips',
-      price: 1
+      price: 0.25
     }
   ]
 }
