@@ -15,9 +15,9 @@
       </thead>
       <tbody>
         <tr v-for="product in products" :key="product.id">
-            <td>{{ p.name }}</td>
-            <td>${{ p.price }}</td>
-            <td>{{ p.quantity }}</td>
+            <td>{{ product.name }}</td>
+            <td>${{ product.price }}</td>
+            <td>{{ product.quantity }}</td>
           </tr>
           <tr>
             <td><b>Total:</b></td>
