@@ -2,6 +2,13 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import * as types from './mutation-types'
 Vue.use(Vuex)
+
+function getTotal(products) {
+  return products.reduce((total, p) => {
+    return total + p.price * p.quantity
+  }, 0)
+}
+
 const debug = process.env.NODE_ENV !== 'production'
 
 // initial state
@@ -64,8 +71,8 @@ const actions = {
       id: product.id
     })
   },
-  checkout({ commit }) {
-    alert('Pay us $' + this.total);
+  checkout({ commit }, products) {
+    alert('Pay us $' + getTotal(products));
     commit(types.CHECKOUT);
   }
 }

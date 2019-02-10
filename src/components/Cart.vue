@@ -26,7 +26,7 @@
           </tr>
       </tbody>
 </table>
-    <p><button v-show="products.length" class='button is-primary' @click='checkout'>Checkout</button></p>
+    <p><button v-show="products.length" class='button is-primary' @click='checkout(products)'>Checkout</button></p>
   </div>
 </template>
 
