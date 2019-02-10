@@ -60,8 +60,8 @@
     name: 'app',
     computed: {
       ...mapGetters({
-        orders:   'cartOrders'
-        products: 'allProducts'
+        orders:   'cartOrders',
+        products: 'allProducts',
         length:   'getNumberOfOrders'
       }),
       orderTotal (order) {
