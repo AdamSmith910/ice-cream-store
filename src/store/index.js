@@ -64,6 +64,10 @@ const actions = {
       id: product.id
     })
   }
+
+  clearCart({ commit }) {
+    commit(types.CLEAR_CART);
+  }
 }
 
 // mutations
@@ -78,7 +82,11 @@ const mutations = {
         } else {
           record.quantity++
         }
-      }
+  }
+
+  [types.CLEAR_CART] (state, { id }) {
+    state.added = [];
+  }
 }
 
 // one store for entire application

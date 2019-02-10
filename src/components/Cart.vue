@@ -31,7 +31,7 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   export default {
     computed: {
       ...mapGetters({
@@ -43,9 +43,13 @@
         }, 0)
       }
     },
-    methods: {
+    methods: mapActions([
+      'clearCart'
+    ]);
+
+    {
       checkout() {
-        alert('Pay us $' + this.total)
+        alert('Pay us $' + this.total).then(clearCart);
       }
     }
   }

@@ -21,16 +21,17 @@
     </table>
   </div>
 </template>
+
 <script>
-import { mapGetters, mapActions } from 'vuex'
-export default {
-  name: 'app',
-  computed: mapGetters({
-    products: 'allProducts',
-    length: 'getNumberOfProducts'
-  }),
-  methods: mapActions([
-    'addToCart'
-  ])
-}
+  import { mapGetters, mapActions } from 'vuex'
+  export default {
+    name: 'app',
+    computed: mapGetters({
+      products: 'allProducts',
+      length: 'getNumberOfProducts'
+    }),
+    methods: mapActions([
+      'addToCart'
+    ])
+  }
 </script>
