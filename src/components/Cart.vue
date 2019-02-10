@@ -17,12 +17,12 @@
         <tr v-for="order in orders" :key="order.id">
             <td>{{ order.id }}</td>
             <td v-for="products in order" :key="product.id">{{ product.quantity }} {{ product.measurement }} {{ product.name }}</td>
-            <td>{{ order.cost }}</td>
+            <td>{{ orderTotal(order) }}</td>
           </tr>
           <tr>
             <td><b>Total:</b></td>
             <td></td>
-            <td><b>${{ total }}</b></td>
+            <td><b>${{ cartTotal }}</b></td>
           </tr>
       </tbody>
     </table>
@@ -42,7 +42,7 @@
           </thead>
           <tbody>
             <tr v-for="product in products" :key="product.id">
-              <td>{{ product.measurement }}</td>
+              <td>scoop/serving</td>
               <td>{{ product.name }}</td>
               <td>${{ product.price }}</td>
               <td><button @click='addToOrder(product)' class='button is-info'>Add to order</button></td>
@@ -57,14 +57,22 @@
 <script>
   import { mapGetters, mapActions } from 'vuex'
   export default {
+    name: 'app',
     computed: {
       ...mapGetters({
-        products: 'cartProducts'
+        orders:   'cartOrders'
+        products: 'allProducts'
+        length:   'getNumberOfOrders'
       }),
-      total () {
-        return this.products.reduce((total, p) => {
-          return total + p.price * p.quantity
+      orderTotal (order) {
+        return order.products.reduce((orderTotal, p) => {
+          return orderTotal + p.price * p.quantity
         }, 0)
+      },
+      cartTotal () {
+        return this.orders.reduce((cartTotal, o) => {
+          return cartTotal + orderTotal(o)
+        })
       }
     },
     methods: mapActions([
