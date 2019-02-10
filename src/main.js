@@ -9,8 +9,7 @@ Vue.use(VueRouter)
 
 // Define routes
 const routes = [
-  { path: '/', component: Products },
-  { path: '/cart', component: Cart }
+  { path: '/', component: Cart}
 ]
 
 // Register routes
