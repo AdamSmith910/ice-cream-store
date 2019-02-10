@@ -44,13 +44,7 @@
       }
     },
     methods: mapActions([
-      'clearCart'
-    ]);
-
-    {
-      checkout() {
-        alert('Pay us $' + this.total).then(clearCart);
-      }
-    }
+                'checkout'
+    ])
   }
 </script>

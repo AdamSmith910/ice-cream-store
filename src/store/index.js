@@ -63,10 +63,10 @@ const actions = {
     commit(types.ADD_TO_CART, {
       id: product.id
     })
-  }
-
-  clearCart({ commit }) {
-    commit(types.CLEAR_CART);
+  },
+  checkout({ commit }) {
+    alert('Pay us $' + this.total);
+    commit(types.CHECKOUT);
   }
 }
 
@@ -82,9 +82,8 @@ const mutations = {
         } else {
           record.quantity++
         }
-  }
-
-  [types.CLEAR_CART] (state, { id }) {
+  },
+  [types.CHECKOUT] (state) {
     state.added = [];
   }
 }
