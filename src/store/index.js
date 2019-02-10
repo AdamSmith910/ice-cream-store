@@ -19,19 +19,19 @@ const state = {
       id: '1',
       measurement: '1 scoop',
       name: 'Vanilla',
-      price: 1
+      price: 1.00
     },
     {
       id: '2',
       measurement: '1 scoop',
       name: 'Chocolate',
-      price: 1
+      price: 1.00
     },
     {
       id: '3',
       measurement: '1 scoop',
       name:  'Mint Chocolate Chip',
-      price: 1
+      price: 1.00
     },
     {
       id: '4',
