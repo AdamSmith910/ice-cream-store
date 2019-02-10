@@ -48,18 +48,18 @@ const getters = {
   cartProducts: state => {
     return state.added.map(({ id, quantity }) => {
       const product = state.all.find(p => p.id === id)
-return {
-        name: product.name,
-        price: product.price,
-        quantity
-      }
-    })
-  }
+        return {
+                name: product.name,
+                price: product.price,
+                quantity
+              }
+        })
+    }
 }
 
 // actions
 const actions = {
-  addToCart({ commit }, product){
+  addToCart({ commit }, product) {
     commit(types.ADD_TO_CART, {
       id: product.id
     })
@@ -68,17 +68,17 @@ const actions = {
 
 // mutations
 const mutations = {
-[types.ADD_TO_CART] (state, { id }) {
-      const record = state.added.find(p => p.id === id)
-if (!record) {
-        state.added.push({
-          id,
-          quantity: 1
-        })
-      } else {
-        record.quantity++
+  [types.ADD_TO_CART] (state, { id }) {
+        const record = state.added.find(p => p.id === id)
+  if (!record) {
+          state.added.push({
+            id,
+            quantity: 1
+          })
+        } else {
+          record.quantity++
+        }
       }
-    }
 }
 
 // one store for entire application

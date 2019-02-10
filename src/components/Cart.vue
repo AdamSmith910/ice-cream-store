@@ -29,23 +29,24 @@
     <p><button v-show="products.length" class='button is-primary' @click='checkout'>Checkout</button></p>
   </div>
 </template>
+
 <script>
-import { mapGetters } from 'vuex'
-export default {
-  computed: {
-    ...mapGetters({
-      products: 'cartProducts'
-    }),
-    total () {
-      return this.products.reduce((total, p) => {
-        return total + p.price * p.quantity
-      }, 0)
-    }
-  },
-  methods: {
-    checkout(){
-      alert('Pay us $' + this.total)
+  import { mapGetters } from 'vuex'
+  export default {
+    computed: {
+      ...mapGetters({
+        products: 'cartProducts'
+      }),
+      total () {
+        return this.products.reduce((total, p) => {
+          return total + p.price * p.quantity
+        }, 0)
+      }
+    },
+    methods: {
+      checkout() {
+        alert('Pay us $' + this.total)
+      }
     }
   }
-}
 </script>
