@@ -61,7 +61,6 @@
     computed: {
       ...mapGetters({
         orders:   'cartOrders',
-        products: 'allProducts',
         length:   'getNumberOfOrders'
       }),
       orderTotal (order) {
@@ -71,7 +70,7 @@
       },
       cartTotal () {
         return this.orders.reduce((cartTotal, o) => {
-          return cartTotal + orderTotal(o)
+          return cartTotal + o.products
         })
       }
     },

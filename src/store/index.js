@@ -3,10 +3,16 @@ import Vuex from 'vuex'
 import * as types from './mutation-types'
 Vue.use(Vuex)
 
-function getTotal(products) {
-  return products.reduce((total, p) => {
-    return total + p.price * p.quantity
+function getCartTotal(orders) {
+  return orders.reduce((cartTotal, o) => {
+    return cartTotal + getOrderTotal(o);
   }, 0)
+}
+
+function getOrderTotal(order) {
+  return order.products.reduce((orderTotal, p) => {
+    return orderTotal + p.quantity * p.price;
+  })
 }
 
 const debug = process.env.NODE_ENV !== 'production'
@@ -66,30 +72,30 @@ const getters = {
 
 // actions
 const actions = {
-  addToCart({ commit }, product) {
-    commit(types.ADD_TO_CART, {
+  addToOrder({ commit }, product) {
+    commit(types.ADD_TO_ORDER) {
       id: product.id
-    })
-  },
-  checkout({ commit }, products) {
-    alert('Pay us $' + getTotal(products));
+    }
+  }
+  checkout({ commit }, orders) {
+    alert('Pay us $' + getCartTotal(orders));
     commit(types.CHECKOUT);
   }
 }
 
 // mutations
 const mutations = {
-  [types.ADD_TO_CART] (state, { id }) {
-        const record = state.added.find(p => p.id === id)
-  if (!record) {
-          state.added.push({
-            id,
-            quantity: 1
-          })
-        } else {
-          record.quantity++
-        }
-  },
+  [types.ADD_TO_ORDER] (state, { id }) {
+    const record = state.added.find(o => o.id === id)
+    if (!record.products) {
+      record.products.push({
+        id,
+        quantity: 1
+      })
+    } else {
+      record.products.quantity++
+    }
+  }
   [types.CHECKOUT] (state) {
     state.added = [];
   }
