@@ -3,7 +3,6 @@
     <h1 class="title">Your Cart</h1>
     <p v-show="!orders.length">
       <i>Your cart is empty!</i>
-      <router-link to="/">Go shopping</router-link>
     </p>
     <table class="table is-striped" v-show="orders.length">
       <thead>
@@ -22,7 +21,7 @@
           <tr>
             <td><b>Total:</b></td>
             <td></td>
-            <td><b>${{ getCartTotal }}</b></td>
+            <td><b>{{ getCartTotal }}</b></td>
           </tr>
       </tbody>
     </table>
@@ -66,7 +65,6 @@
       })
     },
     methods: mapActions([
-                'getOrderTotal',
                 'getCartTotal',
                 'addNewOrder',
                 'checkout'

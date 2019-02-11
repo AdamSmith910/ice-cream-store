@@ -14,6 +14,7 @@ const debug = process.env.NODE_ENV !== 'production'
 // initial state
 const state = {
   added: [],
+  cartTotal: 0,
   all: [
     {
       id: '1',
@@ -74,7 +75,7 @@ const actions = {
 // mutations
 const mutations = {
   [types.GET_CART_TOTAL] (state) {
-    state.cartTotal = state.added.reduce((cartTotal, o) => {
+    state.cartTotal = state.cartTotal + state.added.reduce((cartTotal, o) => {
       return cartTotal + o.orderTotal;
     }, 0)
   },
