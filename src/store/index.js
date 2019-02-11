@@ -52,16 +52,7 @@ const state = {
 const getters = {
   allProducts: state => state.all, // would need action/mutation if data fetched async
   getNumberOfProducts: state => (state.all) ? state.all.length : 0,
-  cartOrders: state => {
-    return state.added.map(({ id }) => {
-      const order = state.added.find(o => o.id === id)
-        return {
-                id: order.id,
-                products: order.products,
-                orderTotal: order.orderTotal,
-              }
-        })
-    }
+  cartOrders: state => state.added
 }
 
 // actions
