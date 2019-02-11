@@ -5,14 +5,8 @@ Vue.use(Vuex)
 
 function getCartTotal(orders) {
   return orders.reduce((cartTotal, o) => {
-    return cartTotal + getOrderTotal(o);
+    return cartTotal + o.orderTotal;
   }, 0)
-}
-
-function getOrderTotal(order) {
-  return order.products.reduce((orderTotal, p) => {
-    return orderTotal + p.quantity * p.price;
-  })
 }
 
 const debug = process.env.NODE_ENV !== 'production'
@@ -58,13 +52,13 @@ const state = {
 const getters = {
   allProducts: state => state.all, // would need action/mutation if data fetched async
   getNumberOfProducts: state => (state.all) ? state.all.length : 0,
-  cartProducts: state => {
-    return state.added.map(({ id, quantity }) => {
-      const product = state.all.find(p => p.id === id)
+  cartOrders: state => {
+    return state.added.map(({ id }) => {
+      const order = state.added.find(o => o.id === id)
         return {
-                name: product.name,
-                price: product.price,
-                quantity
+                id: order.id,
+                products: order.products,
+                orderTotal: order.orderTotal,
               }
         })
     }
