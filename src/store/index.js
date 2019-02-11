@@ -73,10 +73,10 @@ const getters = {
 // actions
 const actions = {
   addToOrder({ commit }, product) {
-    commit(types.ADD_TO_ORDER) {
+    commit(types.ADD_TO_ORDER, {
       id: product.id
-    }
-  }
+    })
+  },
   checkout({ commit }, orders) {
     alert('Pay us $' + getCartTotal(orders));
     commit(types.CHECKOUT);
@@ -95,7 +95,7 @@ const mutations = {
     } else {
       record.products.quantity++
     }
-  }
+  },
   [types.CHECKOUT] (state) {
     state.added = [];
   }
