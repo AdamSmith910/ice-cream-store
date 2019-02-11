@@ -17,6 +17,7 @@
             <td>{{ order.id }}</td>
             <td v-for="product in order.products" :key="product.id">{{ product.quantity }} {{ product.measurement }} {{ product.name }}</td>
             <td>${{ order.orderTotal }}</td>
+            <td><button @click='deleteOrder(order)' class='button is-info'>Delete order</button></td>
           </tr>
           <tr>
             <td><b>Total:</b></td>
@@ -67,6 +68,8 @@
     methods: mapActions([
                 'getCartTotal',
                 'addNewOrder',
+                'addToOrder',
+                'deleteOrder',
                 'checkout'
     ])
   }

@@ -66,9 +66,24 @@ const actions = {
       id: order.id
     })
   },
+  addToOrder({ commit }, order, product) {
+    commit(types.ADD_TO_ORDER, {
+      id: product.id,
+      order_id: order.id
+    })
+  },
+  deleteOrder({ commit }, order) {
+    commit(types.DELETE_ORDER, {
+      id: order.id
+    })
+  },
   checkout({ commit }, orders) {
-    alert('Pay us $' + getCartTotal(orders));
-    commit(types.CHECKOUT);
+    if (state.added.forEach(o => o.products.any(p => (p.id === 1 || p.id === 2 || p.id === 3)))) {
+      alert('Pay us $' + getCartTotal(orders));
+      commit(types.CHECKOUT);
+    } else {
+      alert('One of your orders does not contain any scoops of ice cream.  Each order must have at least one scoop of ice cream.')
+    }
   }
 }
 
@@ -85,6 +100,25 @@ const mutations = {
       products: [],
       orderTotal: 0
     })
+  },
+  [types.ADD_TO_ORDER] (state, { orderId }, { productId }) {
+    const orderRecord = state.added.find(o => o.id === orderId)
+    const productRecord = orderRecord.find(p => p.id === productId)
+    if (!productRecord) {
+      orderRecord.push({
+        id: productId,
+        quantity: 1
+      })
+    } else {
+      productRecord.quantity++
+    }
+  },
+  [types.DELETE_ORDER] (state, { orderId }) {
+    for (var i = 0; i < state.added.length; i++) {
+      if (state.added[i].id === orderId) {
+        state.added.splice(i, 1);
+      }
+    }
   },
   [types.CHECKOUT] (state) {
     state.added = [];

@@ -1,3 +1,5 @@
 export const GET_CART_TOTAL = 'GET_CART_TOTAL'
 export const ADD_NEW_ORDER = 'ADD_NEW_ORDER'
+export const ADD_TO_ORDER = 'ADD_TO_RODER'
+export const DELETE_ORDER = 'DELETE_ORDER'
 export const CHECKOUT = 'CHECKOUT'
