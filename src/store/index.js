@@ -57,6 +57,9 @@ const getters = {
 
 // actions
 const actions = {
+  getCartTotal({ commit }) {
+    commit(types.GET_CART_TOTAL);
+  },
   addNewOrder({ commit }, order) {
     commit(types.ADD_NEW_ORDER, {
       id: order.id
@@ -70,6 +73,11 @@ const actions = {
 
 // mutations
 const mutations = {
+  [types.GET_CART_TOTAL] (state) {
+    state.cartTotal = state.added.reduce((cartTotal, o) => {
+      return cartTotal + o.orderTotal;
+    }, 0)
+  },
   [types.ADD_NEW_ORDER] (state, { id }) {
     state.added.push({
       id,

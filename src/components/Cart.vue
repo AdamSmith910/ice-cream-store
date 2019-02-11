@@ -17,12 +17,12 @@
         <tr v-for="order in orders" :key="order.id">
             <td>{{ order.id }}</td>
             <td v-for="product in order.products" :key="product.id">{{ product.quantity }} {{ product.measurement }} {{ product.name }}</td>
-            <td>{{ orderTotal(order) }}</td>
+            <td>${{ order.orderTotal }}</td>
           </tr>
           <tr>
             <td><b>Total:</b></td>
             <td></td>
-            <td><b>${{ cartTotal(orders) }}</b></td>
+            <td><b>${{ getCartTotal }}</b></td>
           </tr>
       </tbody>
     </table>
@@ -63,19 +63,11 @@
         orders:   'cartOrders',
         products: 'allProducts',
         length:   'getNumberOfOrders'
-      }),
-      orderTotal (order) {
-        return order.products.reduce((orderTotal, p) => {
-          return orderTotal + p.price * p.quantity
-        }, 0)
-      },
-      cartTotal (orders) {
-        return orders.reduce((cartTotal, o) => {
-          return cartTotal + o.orderTotal
-        })
-      }
+      })
     },
     methods: mapActions([
+                'getOrderTotal',
+                'getCartTotal',
                 'addNewOrder',
                 'checkout'
     ])
