@@ -22,7 +22,7 @@
           <tr>
             <td><b>Total:</b></td>
             <td></td>
-            <td><b>${{ cartTotal }}</b></td>
+            <td><b>${{ cartTotal(orders) }}</b></td>
           </tr>
       </tbody>
     </table>
@@ -42,7 +42,7 @@
           </thead>
           <tbody>
             <tr v-for="product in products" :key="product.id">
-              <td>scoop/serving</td>
+              <td>1 scoop/serving</td>
               <td>{{ product.name }}</td>
               <td>${{ product.price }}</td>
               <td><button @click='addToOrder(product)' class='button is-info'>Add to order</button></td>
@@ -69,15 +69,14 @@
           return orderTotal + p.price * p.quantity
         }, 0)
       },
-      cartTotal () {
-        return this.orders.reduce((cartTotal, o) => {
-          return cartTotal + o.products
+      cartTotal (orders) {
+        return orders.reduce((cartTotal, o) => {
+          return cartTotal + o.orderTotal
         })
       }
     },
     methods: mapActions([
                 'addNewOrder',
-                'addToOrder',
                 'checkout'
     ])
   }

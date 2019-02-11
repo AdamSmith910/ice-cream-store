@@ -57,9 +57,9 @@ const getters = {
 
 // actions
 const actions = {
-  addToOrder({ commit }, product) {
-    commit(types.ADD_TO_ORDER, {
-      id: product.id
+  addNewOrder({ commit }, order) {
+    commit(types.ADD_NEW_ORDER, {
+      id: order.id
     })
   },
   checkout({ commit }, orders) {
@@ -70,16 +70,12 @@ const actions = {
 
 // mutations
 const mutations = {
-  [types.ADD_TO_ORDER] (state, { id }) {
-    const record = state.added.find(o => o.id === id)
-    if (!record.products) {
-      record.products.push({
-        id,
-        quantity: 1
-      })
-    } else {
-      record.products.quantity++
-    }
+  [types.ADD_NEW_ORDER] (state, { id }) {
+    state.added.push({
+      id,
+      products: [],
+      orderTotal: 0
+    })
   },
   [types.CHECKOUT] (state) {
     state.added = [];
